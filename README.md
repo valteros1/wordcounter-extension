@@ -1,1 +1,2 @@
 # wordcounter-extension
+Chrome veebilaiend
