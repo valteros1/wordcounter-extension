@@ -8,11 +8,18 @@ async function sendSelectedText(selectedText) { // async funktsioon mis saadab v
       },
       body: JSON.stringify({ tekst: selectedText }) 
     });
+    console.log(response);
     const data = await response.json(); // 
     console.log(data); 
+    const correctedWords = data[0];
+    const sentText = data[1];
+    console.log("sentText :", sentText)
+    console.log("correctedWords :", correctedWords)
   } catch (error) {
     console.error(error);
   }
+
+  
 }
 
 document.addEventListener('mouseup', function(event) { // 
