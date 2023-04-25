@@ -1,17 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Popup Example</title>
+  <title>Popup for Extension</title>
   <script src="popup.js"></script>
 </head>
 <body>
-    <h1>Korrektne lause on :</h1>
+
+  <style>
+    body {
+      width: 400px;
+      
+      margin: 0;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    #content {
+      margin: auto;
+      text-align: center;
+    }
+
+    #button {
+      margin: auto;
+      text-align: center;
+      width: 100%;
+      background-color: aliceblue;
+    }
+  </style>
+    
+    <h1> Tekstihindaja </h1>
   
     <h2> <div id="corrected-words"></div> </h2>
+    
+    <h2> <div id="no-mistakes" >Vigu ei leitud</div> </h2>
 
-    <h2>Vigane valitud lause oli :</h2>
+    <!-- <h2>Vigane valitud lause oli :</h2> -->
 
-    <h2> <div id="sent-text"></div> </h2>
+    <!-- <h2> <div id="sent-text"></div> </h2> -->
+
+    <h3 id="error-message" style="color:red;"></h3>
+  
+    <h3 id="success-message" style="color:green;"></h3>
+  
+    
 
     <button id="close-button">Sulge</button>
 </body>

@@ -11,11 +11,11 @@ async function sendSelectedText(selectedText) { // async funktsioon mis saadab v
     console.log(response);
     const data = await response.json(); // 
     console.log(data); 
-    const correctedWords = data[0];
-    const sentText = data[1];
+    const recievedWords = data[0];
+    const sentText = data[1];recievedWords
     
     console.log("sentText :", sentText)
-    console.log("correctedWords :", correctedWords)
+    console.log("recievedWords :", recievedWords)
 
     const sentWords = sentText.split(' '); // teksti eraldamine 
 
@@ -28,7 +28,7 @@ async function sendSelectedText(selectedText) { // async funktsioon mis saadab v
         
         data: {
           sentText: sentText,
-          correctedWords: correctedWords,
+          recievedWords: recievedWords,
           sentWords: sentWords
         }
       };
@@ -38,12 +38,12 @@ async function sendSelectedText(selectedText) { // async funktsioon mis saadab v
         type: 'data', 
         data: { 
           sentText: sentText, // add sentText to the data
-          correctedWords: correctedWords, 
+          recievedWords: recievedWords, 
           sentWords: sentWords 
         } 
       }, function(response) {
         console.log('Message sent from content.js to background.js');
-        chrome.storage.local.set({ 'correctedWords': correctedWords }, function() {
+        chrome.storage.local.set({ 'recievedWords': recievedWords }, function() {
           console.log('Value is set to ' + result.correctedWords);
         });
       
@@ -67,6 +67,7 @@ async function sendSelectedText(selectedText) { // async funktsioon mis saadab v
 
 let selectedText = "";
 document.addEventListener('mouseup', function(event) {
+  chrome.runtime.sendMessage({ type: 'mouseUpEvent' });
   selectedText = window.getSelection().toString();
 });
 
