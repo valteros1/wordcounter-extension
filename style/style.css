@@ -1,3 +1,7 @@
 .my-selected-text {
     background-color: yellow;
   }
+
+  .incorrect-word::selection {
+    background-color: red; /* Change color for incorrect words */
+  }

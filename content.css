@@ -1,0 +1,11 @@
+::selection {
+    background-color: rgb(185, 153, 245);
+  }
+  
+  .corrected-word {
+    background-color: green; /* Set the desired color for the corrected words */
+  }
+
+  .incorrect-word {
+    background-color: red;
+  }

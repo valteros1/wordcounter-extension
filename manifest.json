@@ -1,21 +1,36 @@
 {
     "manifest_version": 3,
-    "name":"Word counter by valteros1",
+    "name":"Tekstihindaja",
     "version": "1.1",
-    "description":"Returns counted words",
+    "description":"writing evaluation tool",
+    "action": {
+        "default_popup": "popup.html" },
     
    
 
     "content_scripts":[
         {
             "matches": ["https://*/*"],
-            "js":["content.js"]
+            "js":["content.js"],
+            "css":["content.css"]
         }
     ],
     "permissions": [
         "activeTab",
-        "scripting"
+        "scripting",
+        "storage"
 
-      ]
+      ],
+
+     
+
+        "background": {
+            "service_worker": "background.js"
+          }
+       
+
+
+
+
 
 }
