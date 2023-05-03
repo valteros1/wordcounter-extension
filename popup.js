@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
       let highlightedText = '';
       for (let i = 0; i < correctedWords.length; i++) {
         if (correctedWords[i] !== sentText[i]) {
-          highlightedText += `<span style="background-color: #f4b8c2">${correctedWords[i]}</span>  `;
+          highlightedText += `<span class="stripes">${sentText[i]}</span> <span style="background-color: #AEF359"> ${correctedWords[i]}</span>  `;
         } else {
           highlightedText += `${correctedWords[i]} `;
         }
@@ -44,6 +44,20 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const closeButton = document.getElementById('close-button');
     closeButton.addEventListener('click', () => {
+      chrome.storage.local.clear();
+      
       window.close();
+      window.getSelection().removeAllRanges();
+      
+    });
+    
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const closeButton = document.getElementById('level-assessment-button');
+    closeButton.addEventListener('click', () => {
+      console.log("Tasemehinnang")
     });
   });
+
+  

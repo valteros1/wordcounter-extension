@@ -5,3 +5,22 @@
   .incorrect-word::selection {
     background-color: red; /* Change color for incorrect words */
   }
+
+.test {
+    text-align: center;
+  }
+
+  .stripes {
+    
+    /* background-color: : #f4b8c2; */
+    text-decoration: line-through;
+    text-decoration-color:#ff002b ;
+    text-decoration-thickness: 1.5px;
+  
+    /* font-weight: normal; */
+    
+    
+    
+    
+  }
+
