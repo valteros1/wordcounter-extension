@@ -25,11 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('corrected-words').style.display = 'none';
     }
 
-    if (response && response.sentText) {
-      document.getElementById('sent-text').innerHTML = response.sentText;
-    } else {
-      document.getElementById('sent-text').innerHTML = 'No sent text found';
-    }
+  
   });
 });
 
@@ -59,5 +55,9 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log("Tasemehinnang")
     });
   });
+
+
+
+
 
   
