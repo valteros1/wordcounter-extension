@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Message sent from popup.js to background.js');
     console.log(response);
 
+    
+// If there are mistake, hide the corrected-words element and it displays the no-mistakes element
     if (response && response.sentText && response.recievedWords && response.sentText === response.recievedWords) {
       document.getElementById('no-mistakes').style.display = 'block';
       document.getElementById('corrected-words').style.display = 'none';
@@ -17,10 +19,12 @@ document.addEventListener('DOMContentLoaded', function() {
           highlightedText += `${correctedWords[i]} `;
         }
       }
+      // Display the highlighted text in the corrected-words element and hide the no-mistakes element
       document.getElementById('corrected-words').style.display = 'block';
       document.getElementById('corrected-words').innerHTML = highlightedText;
       document.getElementById('no-mistakes').style.display = 'none';
     } else {
+      // If there is no response, hide the corrected-words element and display the no-mistakes element
       document.getElementById('no-mistakes').style.display = 'block';
       document.getElementById('corrected-words').style.display = 'none';
     }
@@ -49,10 +53,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
   });
 
+  
   document.addEventListener('DOMContentLoaded', function() {
-    const closeButton = document.getElementById('level-assessment-button');
-    closeButton.addEventListener('click', () => {
-      console.log("Tasemehinnang")
+    const assassmentButton = document.getElementById('level-assessment-button');
+    assassmentButton.addEventListener('click', () => {
+      window.close();
     });
   });
 
@@ -60,4 +65,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  
