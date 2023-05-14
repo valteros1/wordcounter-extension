@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <title>Popup for Extension</title>
   
   <link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 <body>
+
+  <!-- <label for="myCheck">Checkbox:</label> 
+<input type="checkbox" id="myCheck" onclick="myFunction()"> -->
+
 
   <style>
     body {
@@ -24,31 +29,95 @@
       text-align: center;
     }
 
+    #text-mistakes-button{
+      background-color: aliceblue ;
+      border-radius: 8px;
+    }
+
+
+    #level-assessment-button{
+      background-color: aliceblue;
+      border-radius: 8px;
+    }
+
+    #text-complexity-button{
+      background-color: aliceblue ;
+      border-radius: 8px;
+    }
+
+    #text-diversity-button{
+      background-color: aliceblue ;
+      border-radius: 8px;
+      width: 100%;
+    }
+
     #button {
       margin: auto;
       text-align: center;
       width: 100%;
-      background-color: aliceblue;
+      background-color: rgb(16, 101, 175) !important;
     }
   </style>
     
     <h1> Tekstihindaja </h1>
     <table>
     <tr>
-      <td><button id="text-mistakes-button" >Eksimused</button></td>
+      <td><button id="text-mistakes-button"  >Eksimused</button></td>
       <td><button id="level-assessment-button" >Tasemehinnang</button></td>
       <td><button id="text-complexity-button" >Keerukus</button></td>
-      <td><button id="text-diversity-button">Mitmekesisus</button></td>
+      <td><button id="text-diversity-button" >Mitmekesisus</button></td>
     
     </tr>
   </table>
     
     
-    
+    <div id="assessment-area">
+
+
+    </div>
   
+    
+
+    <div id="complexity-area">
+    <h2> 
+      <div id="complexity"></div> 
+      <br>
+          <div id="sentences"> </div>
+          <div id="words"></div>
+          <div id="multisyllables"></div>
+          <div id="syllables"></div>
+          <div id="longwords"></div>
+          <div id="smog"></div>
+          <div id="fkindex"></div>
+          <div id="lix"></div>
+          <br>
+          <div id="sentenceslevel"></div>
+          
+    </h2>
+  </div>
+
+  <div id="diversity-area">
+    <h2> 
+      <div id="diversity"></div> 
+      <br>
+          <div id="diversitysentence"> </div>
+          <div id="differentwords"></div>
+          <div id="klss"></div>
+          <div id="jlss"></div>
+          <div id="mtld"></div>
+          <div id="hdd"></div>
+          
+          
+    </h2>
+  </div>
+
+    <div id="corrected-area">
+    
     <h2> <div id="corrected-words"></div> </h2>
     
-    <h2> <div id="no-mistakes" >Vigu ei leitud</div> </h2>
+    <h2> <div id="no-mistakes" ></div> </h2>
+
+  </div>
 
     <!-- <h2>Vigane valitud lause oli :</h2> -->
 
