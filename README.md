@@ -1,11 +1,11 @@
 # wordcounter-extension
-Töötab koos Chromega 
+Veebirakendus Töötab koos Chrome veebilehtiseja
 
-Veebilaiendi laadimiseks chrome://extensions/ ja vali kaust, kuhu tirisid wordcounter-extension
+Lae alla kogu repo webcounter-extension 
+Mine :
+chrome://extensions
+Lae rakendus veebilehitsejasse - valides load unpacked ja võttes worddcounter-extension kausta
 
-Lisaks laadida  https://github.com/valteros1/wordcounter
+Peale seda aktiveeri veebilehitseja ja lisa ta nähtavale valides pin.
 
-Selleks, et wordcounter töötaks, tuleb teha :
-npm install
-npm start
-Töötab pordil 3000
+Analüüsiks vali aktiivseks hiirega tekst ja tulemuste jaoks vajuta tekstihindaja ikoonile tähisega "T".
