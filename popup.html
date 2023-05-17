@@ -11,53 +11,6 @@
   <!-- <label for="myCheck">Checkbox:</label> 
 <input type="checkbox" id="myCheck" onclick="myFunction()"> -->
 
-
-  <style>
-    body {
-      width: 400px;
-      
-      margin: 0;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 100%;
-    }
-
-    #content {
-      margin: auto;
-      text-align: center;
-    }
-
-    #text-mistakes-button{
-      background-color: aliceblue ;
-      border-radius: 8px;
-    }
-
-
-    #level-assessment-button{
-      background-color: aliceblue;
-      border-radius: 8px;
-    }
-
-    #text-complexity-button{
-      background-color: aliceblue ;
-      border-radius: 8px;
-    }
-
-    #text-diversity-button{
-      background-color: aliceblue ;
-      border-radius: 8px;
-      width: 100%;
-    }
-
-    #button {
-      margin: auto;
-      text-align: center;
-      width: 100%;
-      background-color: rgb(16, 101, 175) !important;
-    }
-  </style>
     
     <h1> Tekstihindaja </h1>
     <table>
@@ -73,9 +26,12 @@
     
     <div id="assessment-area">
 
+      <div id="assessment-details"></div>
+      
 
     </div>
   
+
     
 
     <div id="complexity-area">
@@ -84,8 +40,8 @@
       <br>
           <div id="sentences"> </div>
           <div id="words"></div>
-          <div id="multisyllables"></div>
           <div id="syllables"></div>
+          <div id="multisyllables"></div>      
           <div id="longwords"></div>
           <div id="smog"></div>
           <div id="fkindex"></div>

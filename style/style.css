@@ -19,8 +19,133 @@
   
     /* font-weight: normal; */
     
+  }
+
+  #diversitysentence{
+    padding-bottom:0.5rem;
+    font-weight:lighter;
+  }
+  #differentwords{
+    padding-bottom:0.5rem;
+    font-weight:lighter;
+  }
+  #klss{
+    padding-bottom:0.5rem;
+    font-weight:lighter;
+  }
+  #jlss{
+    padding-bottom:0.5rem;
+    font-weight:lighter;
+  }
+  #mtld{
+    padding-bottom:0.5rem;
+    font-weight:lighter;
+  }
+  #hdd{
+    padding-bottom:0.5rem;
+    font-weight:lighter;
+  }
+
+
+  body {
+    width: 400px;
     
-    
+    margin: 0;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  #content {
+    margin: auto;
+    text-align: center;
+  }
+
+  #text-mistakes-button{
+    background-color: aliceblue ;
+    border-radius: 8px;
+  }
+
+
+  #level-assessment-button{
+    background-color: aliceblue;
+    border-radius: 8px;
+  }
+
+  #text-complexity-button{
+    background-color: aliceblue ;
+    border-radius: 8px;
+  }
+
+  #text-diversity-button{
+    background-color: aliceblue ;
+    border-radius: 8px;
+    width: 100%;
+  }
+
+  #button {
+    margin: auto;
+    text-align: center;
+    width: 100%;
+    background-color: rgb(16, 101, 175) !important;
+  }
+
+
+  #sentences{
+    padding-bottom:0.25rem;
+    font-weight:lighter;
+  }
+
+  #words{
+    padding-bottom:0.25rem;
+    font-weight:lighter;
+  }
+
+
+  #syllables{
+    padding-bottom:0.25rem;
+    font-weight:lighter;
+  }
+
+
+  #multisyllables{
+    padding-bottom:0.25rem;
+    font-weight:lighter;
+  }
+
+  #longwords{
+    padding-bottom:0.25rem;
+    font-weight:lighter;
+  }
+
+  #smog{
+    padding-bottom:0.25rem;
+    font-weight:lighter;
+  }
+
+  #fkindex{
+    padding-bottom:0.25rem;
+    font-weight:lighter;
+  }
+
+  #lix{
+    padding-bottom:0.25rem;
+    font-weight:lighter;
     
   }
 
+  #sentenceslevel{
+    font-weight:lighter;
+  }
+
+
+
+ 
+ 
+       
+  
+  
+  
+  

@@ -44,6 +44,7 @@ async function sendSelectedText(selectedText) {
     console.log(response);
     console.log("Mitmekesisuselt saadud vastus on:", responseMitmekesisus)
     console.log("Keerukuselt saadud vastus on", responseKeerukus)
+    console.log("Tasemelt saadud vastus on", responseTase )
 
     const data = await response.json();
     const dataMitmekesisus = await responseMitmekesisus.json();
@@ -60,8 +61,19 @@ async function sendSelectedText(selectedText) {
     const sentText = data[1];
 
     // Tasemehinnangu osa
+    
+    const langLevelFirst = dataTase[0];
+    const langLevelSecond = dataTase[1];
+    const langLevelThird = dataTase[2];
+    const langLevelFourth = dataTase[3];
+    const langComplexityFirst = dataTase[4];
+    const langComplexitySecond = dataTase[5];
+    const langComplexityThird = dataTase[6];
+    const langComplexityFourth = dataTase[7];
+    const langvocabularyFirst = dataTase[8];
+    const langformUsageFirst = dataTase[12]
 
-
+    console.log("miski", dataTase[0])
 
     // Keerukuse osa
     const sentencesCount = dataKeerukus[0];
@@ -83,8 +95,8 @@ async function sendSelectedText(selectedText) {
 
     // Mitmekesisuse kontroll console.login vastavalt 
 
-    const howManyWords = dataMitmekesisus[11];
-    const differentWords = dataMitmekesisus[10];
+    const howManyWords = dataMitmekesisus[10];
+    const differentWords = dataMitmekesisus[11];
     const klss = dataMitmekesisus[0];
     const jlss = dataMitmekesisus[1];
     const mtld = dataMitmekesisus[4];
@@ -134,7 +146,17 @@ async function sendSelectedText(selectedText) {
             klss: klss,
             jlss: jlss,
             mtld: mtld,
-            hdd: hdd
+            hdd: hdd,
+            langLevelFirst: langLevelFirst,
+            langLevelSecond: langLevelSecond,
+            langLevelThird: langLevelThird,
+            langLevelFourth: langLevelFourth,
+            langComplexityFirst: langComplexityFirst,
+            langComplexitySecond: langComplexitySecond,
+            langComplexityThird: langComplexityThird,
+            langComplexityFourth: langComplexityFourth,
+            langvocabularyFirst: langvocabularyFirst,
+            langformUsageFirst: langformUsageFirst
 
 
           }
@@ -160,7 +182,17 @@ async function sendSelectedText(selectedText) {
             klss: klss,
             jlss: jlss,
             mtld: mtld,
-            hdd: hdd
+            hdd: hdd,
+            langLevelFirst: langLevelFirst,
+            langLevelSecond: langLevelSecond,
+            langLevelThird: langLevelThird,
+            langLevelFourth: langLevelFourth,
+            langComplexityFirst: langComplexityFirst,
+            langComplexitySecond: langComplexitySecond,
+            langComplexityThird: langComplexityThird,
+            langComplexityFourth: langComplexityFourth,
+            langvocabularyFirst: langvocabularyFirst,
+            langformUsageFirst: langformUsageFirst
 
           } 
         }, function(response) {
@@ -212,11 +244,11 @@ async function sendSelectedText(selectedText) {
           });
 
           chrome.storage.local.set({ 'howManyWords': howManyWords }, function() {
-            console.log('Value is set to howManyWords' + dataMitmekesisus[11]);
+            console.log('Value is set to howManyWords' + dataMitmekesisus[10]);
           });
 
           chrome.storage.local.set({ 'differentWords': differentWords }, function() {
-            console.log('Value is set to differentWords' + dataMitmekesisus[9]);
+            console.log('Value is set to differentWords' + dataMitmekesisus[11]);
           });
 
           chrome.storage.local.set({ 'klss': klss }, function() {
@@ -233,8 +265,63 @@ async function sendSelectedText(selectedText) {
 
           chrome.storage.local.set({ 'hdd': hdd }, function() {
             console.log('Value is set to hdd' + dataMitmekesisus[5]);
-            console.log("mis kuradi asi on siis see", response.recievedWords)
+            
           });
+
+          chrome.storage.local.set({ 'langLevelFirst': langLevelFirst }, function() {
+            console.log('Value is set to dataTase' + dataTase[0]);
+            
+          });
+
+          chrome.storage.local.set({ 'langLevelSecond': langLevelSecond }, function() {
+            console.log('Value is set to dataTase' + dataTase[1]);
+            
+          });
+
+          chrome.storage.local.set({ 'langLevelThird': langLevelThird }, function() {
+            console.log('Value is set to dataTase' + dataTase[2]);
+            
+          });
+
+          chrome.storage.local.set({ 'langLevelFourth': langLevelFourth }, function() {
+            console.log('Value is set to dataTase' + dataTase[3]);
+            
+          });
+
+          chrome.storage.local.set({ 'langComplexityFirst': langComplexityFirst }, function() {
+            console.log('Value is set to dataTase' + dataTase[4]);
+            
+          });
+
+          chrome.storage.local.set({ 'langComplexitySecond': langComplexitySecond }, function() {
+            console.log('Value is set to dataTase' + dataTase[5]);
+            
+          });
+
+          chrome.storage.local.set({ 'langComplexityThird': langComplexityThird }, function() {
+            console.log('Value is set to dataTase' + dataTase[6]);
+            
+          });
+
+          chrome.storage.local.set({ 'langComplexityFourth': langComplexityFourth }, function() {
+            console.log('Value is set to dataTase' + dataTase[7]);
+            
+          });
+
+          chrome.storage.local.set({ 'langvocabularyFirst': langvocabularyFirst }, function() {
+            console.log('Value is set to dataTase' + dataTase[8]);
+            
+          });
+
+          chrome.storage.local.set({ 'langformUsageFirst': langformUsageFirst }, function() {
+            console.log('Value is set to dataTase' + dataTase[12]);
+            
+          });
+
+
+          
+
+          
 
           
 
@@ -276,4 +363,4 @@ document.addEventListener('mouseup', function(event) {
 
 
 
-console.log("mis kuradi asi on siis see", response.recievedWords)
+

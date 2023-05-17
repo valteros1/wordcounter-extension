@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (response && response.sentText && response.recievedWords && response.sentText === response.recievedWords) {
       // document.getElementById('no-mistakes').style.display = 'block';
       // document.getElementById('corrected-words').style.display = 'block';
-      let test = 'Vigu ei leitud';
+      let test = 'Vigu ei leitud.';
       document.getElementById('corrected-words').innerHTML = test;
       
       // chrome.extension.getBackgroundPage().console.log('Teade, mida soovite kuvada');
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
   closeButton.addEventListener('click', () => {
     chrome.storage.local.clear();
     // hideAll();
-
+    
     window.close();
     // window.getSelection().removeAllRanges();
 
@@ -81,15 +81,53 @@ document.addEventListener('DOMContentLoaded', function() {
   // });
 });
 
-document.getElementById('level-assessment-button').addEventListener('click', function() { 
+document.getElementById('level-assessment-button').addEventListener('click', function() {
+  chrome.storage.local.get(['langLevelFirst', 'langLevelSecond', 'langLevelThird', 'langLevelFourth', 'langComplexityFirst'
+  , 'langComplexitySecond', 'langComplexityThird', 'langComplexityFourth', 'langvocabularyFirst', 'langformUsageFirst'], function(result) { 
+
 
   hideAll();
   document.getElementById('assessment-area').style.display = 'block';
   document.getElementById('level-assessment-button').style.backgroundColor="#fbcdfc";
+{/* <h2 style="display: inline-block; margin-bottom: 0;">Tekst vastab tasemele:</h2> */}
+const probabilityFirst = result.langLevelFirst.toString().split(',');
+// const splittedProbabilityFirst = probabilityFirst.split(',');
+const probabilitySecond = result.langLevelSecond.toString().split(",");
+const probabilityThird = result.langLevelThird.toString().split(",");
+const probabilityFourth = result.langLevelFourth.toString().split(",");
+const complexityFirst = result.langComplexityFirst.toString().split(",");
+const vocabularyFirst = result.langvocabularyFirst.toString().split(",");
+const formUsageFirst = result.langformUsageFirst.toString().split(",");
+
+
+// const complexitySecond = result.langComplexitySecond.toString().split(",");
+// const complexityThird = result.langComplexityThird.toString().split(",");
+// const complexityFourth = result.langComplexityFourth.toString().split(",");
+// const assessmentProbability = probabilityFirst[0];
+const assessmentProbability =  `
+</br>
+<h1 style="display: inline-block; margin-top: 0;"><p id="tase" style="display: inline;">${probabilityFirst[1]}</p></h1>
+<h1 style="display: inline-block; margin: 0;"> <span id="tasemeprotsent">${Math.round(probabilityFirst[0] * 100)}%</span></h1>
+<h3>Teiste tasemete tõenäosus:</h3>
+<ul>
+  <li><b>${probabilitySecond[1]}</b>: ${Math.round(probabilitySecond[0] * 100)}%</li>
+  <li><b>${probabilityThird[1]}</b>: ${Math.round(probabilityThird[0] * 100)}%</li>
+  <li><b>${probabilityFourth[1]}</b>: ${Math.round(probabilityFourth[0] * 100)}%</li>
+</ul>
+</br>
+<h3>Täpsem hinnang:</h3>
+<ul>
+<li><b>Teksti keerukus:</b> ${complexityFirst[1]}</li>
+<li><b>Sõnavara:</b> ${vocabularyFirst[1]}</li>
+<li><b>Vormikasutus:</b> ${formUsageFirst[1]}</li>
+</ul>
+`;
+;
+document.getElementById('assessment-details').innerHTML = assessmentProbability;
 
 
 })
-
+});
 
 
 
@@ -121,15 +159,15 @@ document.getElementById('text-complexity-button').addEventListener('click', func
     
     // Keerukuse
     document.getElementById('complexity').innerHTML = "Keerukuse andmed" ;
-    document.getElementById('sentences').innerHTML = 'Lauseid: ' + sentencesCount;
-    document.getElementById('words').innerHTML = 'Sõnu: ' + wordCount;
-    document.getElementById('multisyllables').innerHTML = 'Paljusilbilisi sõnu: ' + longSyllables;
-    document.getElementById('syllables').innerHTML = 'Silpe: ' + syllablesCount;
-    document.getElementById('longwords').innerHTML = 'Pikki sõnu: ' + longWords;
-    document.getElementById('smog').innerHTML = 'SMOG: ' + roundedSmog;
-    document.getElementById('fkindex').innerHTML = 'Flesch-Kincaidi Indeks: ' + roundedfkIndex;
-    document.getElementById('lix').innerHTML = 'LIX: ' + lix;
-    document.getElementById('sentenceslevel').innerHTML = 'Pakutav keerukustase: ' + sentenceLevel;
+    document.getElementById('sentences').innerHTML = '<b>Lauseid:</b> ' + sentencesCount;
+    document.getElementById('words').innerHTML = '<b>Sõnu:</b> ' + wordCount;
+    document.getElementById('multisyllables').innerHTML = '<b>Paljusilbilisi sõnu (vähemalt 3 silpi):</b> ' + longSyllables;
+    document.getElementById('syllables').innerHTML = '<b>Silpe:</b> ' + syllablesCount;
+    document.getElementById('longwords').innerHTML = '<b>Pikki sõnu (vähemalt 7 tähte):</b> ' + longWords ;
+    document.getElementById('smog').innerHTML = '<b>SMOG:</b> ' + roundedSmog;
+    document.getElementById('fkindex').innerHTML = '<b>Flesch-Kincaidi Indeks:</b> ' + roundedfkIndex;
+    document.getElementById('lix').innerHTML = '<b>LIX:</b> ' + lix;
+    document.getElementById('sentenceslevel').innerHTML = '<b>Pakutav keerukustase:</b> ' + sentenceLevel;
     
 
   });
@@ -152,17 +190,19 @@ document.getElementById('text-diversity-button').addEventListener('click', funct
     document.getElementById('text-diversity-button').style.backgroundColor="#fbcdfc";
     // Mitmekesisus
     document.getElementById('diversity').innerHTML = "Sõnavara mitmekesisuse andmed" ;
-    document.getElementById('diversitysentence').innerHTML = 'Sõnu: ' + howManyWords;
-    document.getElementById('differentwords').innerHTML = 'Lemmasid ehk erinevaid sõnu: ' + differentWords;
-    document.getElementById('klss').innerHTML = 'Korrigeeritud lemmade-sõnade suhtarv - KLSS(ingl Corrected Type-Token Ratio): ' + klss;
-    document.getElementById('jlss').innerHTML = 'Juuritud lemmade-sõnade suhtarv - JLSS(ingl Root Type-Token Ratio): ' + jlss;
-    document.getElementById('mtld').innerHTML = 'MTLD indeks(ingl Measure of Textual Lexical Diversity): ' + mtld;
-    document.getElementById('hdd').innerHTML = 'HDD indeks(ingl Hypergeometric Distribution D): ' + hdd;
+    document.getElementById('diversitysentence').innerHTML = '<b>Sõnu:</b> ' + howManyWords;
+    document.getElementById('differentwords').innerHTML = '<b>Erinevaid sõnu:</b> ' + differentWords;
+    document.getElementById('klss').innerHTML = '<b>Kõigi ja erinevate sõnade korrigeeritud suhtarv <span style="font-style: italic;">(ingl Corrected Type-Token Ratio)</span>:</b> ' + klss;
+    document.getElementById('jlss').innerHTML = '<b>Kõigi ja erinevate sõnade juuritud suhtarv <span style="font-style: italic;">(ingl Root Type-Token Ratio)</span>:</b> ' + jlss;
+    document.getElementById('mtld').innerHTML = '<b>MTLD indeks <span style="font-style: italic;">(ingl Measure of Textual Lexical Diversity)</span>:</b> ' + mtld;
+    document.getElementById('hdd').innerHTML = '<b>HDD indeks <span style="font-style: italic;">(ingl Hypergeometric Distribution D)</span>:</b> ' + hdd;
  
     
 
   });
 });
+
+
 
 function hideAll(){
   document.getElementById('complexity-area').style.display = 'none';
